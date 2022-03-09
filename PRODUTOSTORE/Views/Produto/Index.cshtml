@@ -1,0 +1,122 @@
+﻿@model IEnumerable<PRODUTOSTORE.Models.ProdutoModel>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>Produtos</h1>
+
+<div class="container-fluid">
+	<div class="align-items-center">
+		<form asp-action="Create" method="post">
+			<input type="hidden" name="Id" value="@ViewBag.Id" />
+			<div class="row">
+				<div class="col-12">
+					<label class="form-label">Nome</label>
+					<input type="text" name="Nome" required class="form-control" value="@ViewBag.Nome" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<label class="form-label">Descrição</label>
+					<input type="text" class="form-control" required name="Descricao" value="@ViewBag.Descricao" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-3">
+					<label class="form-label">Categoria de Produto</label>
+					<select name="CategoriaID" class="form-control" asp-items="@ViewBag.CategoriaProduto"></select>
+				</div>
+				<div class="col-2 align-self-center">
+					<input class="form-check-input" type="checkbox" name="Perecivel" value="true" @ViewBag.PerecivelChecked />
+					<input type="hidden" id="Perecivel" name="Perecivel" value="false" />
+					<label class="form-check-label">
+						Perecível?
+					</label>
+				</div>
+				<div class="col-2 align-self-center">
+					<div class="form-check">
+						<input class="form-check-input" type="checkbox" name="Ativo" value="true" @ViewBag.AtivoChecked />
+						<input type="hidden" name="Ativo" value="false" />
+						<label class="form-check-label">
+							Ativo?
+						</label>
+					</div>
+				</div>
+				<div class="col-3 align-self-center">
+					<button type="submit" value="@ViewBag.btnCadastro" name="Cadastrar" class="btn btn-primary">@ViewBag.btnCadastro</button>
+					<a class="btn btn-danger" asp-action="Index" asp-route-id="">Cancelar</a>
+				</div>
+				<div class="col-2 align-self-center">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<br />
+<br />
+<div class="container-fluid">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Descrição</th>
+				<th>Categoria do Produto</th>
+				<th>Ativo</th>
+				<th>Perecível</th>
+				<th>Ação</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Nome)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Descricao)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.CategoriaProduto.Nome)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Ativo)
+					</td>
+					<td>
+						@Html.DisplayFor(modelItem => item.Perecivel)
+					</td>
+					<td>
+						<div class="row">
+							<div class="col-lg-6 col-md-12">
+								<a asp-action="Index" class="btn btn-success col-12 mb-1" asp-route-id="@item.Id">Atualizar</a>
+							</div>
+							<div class="col-lg-6 col-md-12">
+								<input type="submit" value="Excluir" name="Excluir" class="btn btn-danger col-12 mb-1" onclick="excluir(@item.Id)" />
+							</div>
+						</div>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+<script>
+	function excluir(Id){
+		var confirmar = confirm("Confirmar exclusão do produto?");
+		if(confirmar){
+			$.ajax({
+				type: "POST",
+				url: "@Url.Action("Delete")",
+				data: {Codigo: Id},
+				dataType: "text",
+				success: function (msg) {
+					 location.reload();
+				},
+				error: function (req, status, error) {
+					console.log(error);
+				}
+			});
+		}
+	}
+</script>
