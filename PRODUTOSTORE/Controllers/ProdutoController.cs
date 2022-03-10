@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PRODUTOSTORE.Models;
 
+
 namespace PRODUTOSTORE.Controllers
 {
     public class ProdutoController : Controller
@@ -49,6 +50,17 @@ namespace PRODUTOSTORE.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Nome,Descricao,Ativo,Perecivel,CategoriaID")] ProdutoModel produtoModel)
         {
+            if (produtoModel.Nome == null)
+            {
+                TempData["ErrorMessage"] = "O campo Nome nao pode ser nulo";
+                return RedirectToAction(nameof(Index));
+            }
+            if (produtoModel.Descricao == null)
+            {
+                TempData["ErrorMessage"] = "O campo Descricao nao pode ser nulo";
+                return RedirectToAction(nameof(Index));
+            }
+
             if (produtoModel.Id == 0)
             {
                 _context.Add(produtoModel);

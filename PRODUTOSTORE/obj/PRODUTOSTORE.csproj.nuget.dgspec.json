@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Wellington Lacerda\\Documents\\PRODUTOSTORE\\PRODUTOSTORE\\PRODUTOSTORE.csproj": {}
+    "C:\\Users\\Wellington Lacerda\\Documents\\GitHub\\Produtostore\\PRODUTOSTORE\\PRODUTOSTORE.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Wellington Lacerda\\Documents\\PRODUTOSTORE\\PRODUTOSTORE\\PRODUTOSTORE.csproj": {
+    "C:\\Users\\Wellington Lacerda\\Documents\\GitHub\\Produtostore\\PRODUTOSTORE\\PRODUTOSTORE.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Wellington Lacerda\\Documents\\PRODUTOSTORE\\PRODUTOSTORE\\PRODUTOSTORE.csproj",
+        "projectUniqueName": "C:\\Users\\Wellington Lacerda\\Documents\\GitHub\\Produtostore\\PRODUTOSTORE\\PRODUTOSTORE.csproj",
         "projectName": "PRODUTOSTORE",
-        "projectPath": "C:\\Users\\Wellington Lacerda\\Documents\\PRODUTOSTORE\\PRODUTOSTORE\\PRODUTOSTORE.csproj",
+        "projectPath": "C:\\Users\\Wellington Lacerda\\Documents\\GitHub\\Produtostore\\PRODUTOSTORE\\PRODUTOSTORE.csproj",
         "packagesPath": "C:\\Users\\Wellington Lacerda\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Wellington Lacerda\\Documents\\PRODUTOSTORE\\PRODUTOSTORE\\obj\\",
+        "outputPath": "C:\\Users\\Wellington Lacerda\\Documents\\GitHub\\Produtostore\\PRODUTOSTORE\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Wellington Lacerda\\AppData\\Roaming\\NuGet\\NuGet.Config",
